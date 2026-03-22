@@ -7,13 +7,14 @@ class RandomColorGenerator {
   /// [random] instance of [Random] class.
   final random = Random();
 
-  /// [maxInt] variable stores the maximum value to generate random colors.
-  final int maxInt;
+  /// [maxColorRange] variable determines the maximum range of colors.
+  static const int maxColorRange = 0x00FFFFFF;
 
-  /// [RandomColorGenerator] Constructor.
-  RandomColorGenerator(this.maxInt);
+  /// Set [alphaChannel] variable to be fully opaque
+  static const int alphaChannel = 0xFF000000;
 
-  /// [generateRandomColor] method to generate random colors.
-  Color generateRandomColor() => Color(random.nextInt(maxInt));
+  /// Method [generateRandomColor] generate random color.
+  Color generateRandomColor() => Color(alphaChannel | random
+      .nextInt(maxColorRange));
 
 }
