@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hello_there/core/audio_controller.dart';
 import 'package:hello_there/core/random_color_generator.dart';
+
 
 /// class [MainPage] contains the main page of the application.
 class MainPage extends StatefulWidget {
@@ -28,6 +30,9 @@ class _MainPageState extends State<MainPage> {
         },
         child: Scaffold (
           backgroundColor: _backgroundColor,
+          body: const Center(
+             child: AudioController(),
+        )
         )
     );
   }
