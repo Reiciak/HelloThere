@@ -1,38 +1,39 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/material.dart';
 
-/// [AudioController] class.
-class AudioController extends StatefulWidget {
-  /// [AudioController] Constructor.
-  const AudioController({super.key});
+/// class [AudioController] is responsible for initializing and
+/// playing the audio.
+class AudioController {
 
-  @override
-  State<AudioController> createState() => _AudioControllerState();
-}
-
-class _AudioControllerState extends State<AudioController> {
   final AudioPlayer _audioPlayer = AudioPlayer();
 
-  @override
-  void initState() {
-    super.initState();
-    _audioPlayer.setReleaseMode(ReleaseMode.stop);
-    _audioPlayer.setSource(AssetSource('sounds/obi-wan-hello-there.mp3'));
+  /// [pathToAudioSource] variable contains the path to the audio file
+  final String pathToAudioSource;
+
+  /// [AudioController] constructor initializes the audio player
+  AudioController(this.pathToAudioSource) {
+    initAudio();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () async {
-        await _audioPlayer.resume();
-      },
-      child: const Text('Hello There!'),
-    );
+  /// method [initAudio] initializes the audio player -> sets the source
+  /// if it exist
+  Future<void> initAudio() async {
+    try {
+      await _audioPlayer.setSource(AssetSource(pathToAudioSource));
+      await _audioPlayer.setReleaseMode(ReleaseMode.stop);
+    } catch (e) {
+      dispose();
+      throw Exception('Error initializing audio player: $e');
+    }
   }
 
-  @override
+  /// method [playAudio] plays the audio file
+  Future<void> playAudio() async {
+    await _audioPlayer.resume();
+  }
+
+  /// method [dispose] disposes the audio player
   void dispose() {
     _audioPlayer.dispose();
-    super.dispose();
   }
+
 }

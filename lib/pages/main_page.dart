@@ -5,20 +5,23 @@ import 'package:hello_there/core/random_color_generator.dart';
 
 /// class [MainPage] contains the main page of the application.
 class MainPage extends StatefulWidget {
-  /// [MainPage] Constructor.
 
+  /// [MainPage] Constructor.
   const MainPage({super.key});
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
+
   /// initial color of app -> white
   Color _backgroundColor = Colors.white;
 
   /// instance of [RandomColorGenerator] class
   final RandomColorGenerator randomColor = RandomColorGenerator();
-
+  final AudioController _audioController = AudioController(
+      'sounds/obi-wan-hello-there.mp3'
+  );
 
   @override
   Widget build(BuildContext context){
@@ -30,9 +33,12 @@ class _MainPageState extends State<MainPage> {
         },
         child: Scaffold (
           backgroundColor: _backgroundColor,
-          body: const Center(
-             child: AudioController(),
-        )
+          body: Center(
+             child: ElevatedButton(
+                 onPressed: _audioController.playAudio,
+                 child: const Text('Hello There!')
+             )
+          )
         )
     );
   }
