@@ -8,7 +8,7 @@ class RandomColorGenerator {
   final random = Random();
 
   /// [maxColorRange] variable determines the maximum range of colors.
-  static const int maxColorRange = 0x00FFFFFF;
+  static const int maxColorRange = 0x01000000;
 
   /// Set [alphaChannel] variable to be fully opaque
   static const int alphaChannel = 0xFF000000;
