@@ -6,11 +6,11 @@ class AudioController {
 
   final AudioPlayer _audioPlayer = AudioPlayer();
 
-  /// [pathToAudioSource] variable contains the path to the audio file
-  final String pathToAudioSource;
+  /// [_pathToAudioSource] variable contains the path to the audio file
+  final String _pathToAudioSource;
 
   /// [AudioController] constructor initializes the audio player
-  AudioController(this.pathToAudioSource) {
+  AudioController(this._pathToAudioSource) {
     initAudio();
   }
 
@@ -18,7 +18,7 @@ class AudioController {
   /// if it exist
   Future<void> initAudio() async {
     try {
-      await _audioPlayer.setSource(AssetSource(pathToAudioSource));
+      await _audioPlayer.setSource(AssetSource(_pathToAudioSource));
       await _audioPlayer.setReleaseMode(ReleaseMode.stop);
     } catch (e) {
       dispose();

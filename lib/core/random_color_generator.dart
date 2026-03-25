@@ -4,17 +4,17 @@ import 'dart:ui';
 /// [RandomColorGenerator] class to generate random colors.
 class RandomColorGenerator {
 
-  /// [random] instance of [Random] class.
-  final random = Random();
+  /// [_random] instance of [Random] class.
+  final _random = Random();
 
-  /// [maxColorRange] variable determines the maximum range of colors.
-  static const int maxColorRange = 0x01000000;
+  /// [_maxColorRange] variable determines the maximum range of colors.
+  static const int _maxColorRange = 0x01000000;
 
-  /// Set [alphaChannel] variable to be fully opaque
-  static const int alphaChannel = 0xFF000000;
+  /// Set [_alphaChannel] variable to be fully opaque
+  static const int _alphaChannel = 0xFF000000;
 
   /// Method [generateRandomColor] generate random color.
-  Color generateRandomColor() => Color(alphaChannel | random
-      .nextInt(maxColorRange));
+  Color generateRandomColor() => Color( _alphaChannel | _random
+      .nextInt(_maxColorRange));
 
 }
