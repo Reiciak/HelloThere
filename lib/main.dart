@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_there/pages/main_page.dart';
 
 /// Entry point.
 void main() {
@@ -15,7 +16,8 @@ class Main extends StatelessWidget {
       title: 'Test Task',
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      )
+      ),
+        home: const MainPage(),
     );
   }
 }
